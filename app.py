@@ -34,10 +34,10 @@ def prediction_cls(prediction): # predict the class of the images based on the m
 with st.sidebar:
         st.image('images\sugarcane_animated.png')
         st.title("Sugarcane Leaf Disease Detection")
-        st.subheader("The main aim is to provide an accurate understanding of the Sugarcane Leaf Detection with its cause")
+        st.subheader("The main aim is to provide an accurate understanding of the type of Sugarcane Leaf Detection with a remedial suggestion")
 
 st.write("""
-         # Sugarcane Disease Detection with Remedy Suggestions
+         # Sugarcane Disease Detection System
          """
          )
 
@@ -54,7 +54,7 @@ def import_and_predict(image_data, model):
 if file is None:
     st.text("Please upload an image file")
 else:
-    model = tf.keras.models.load_model('weights\efficientnet_model_sg.h5')
+    #model = tf.keras.models.load_model('weights\efficientnet_model_sg.h5')
     image = Image.open(file)
     st.image(image, use_column_width=True)
     predictions = import_and_predict(image, model)
@@ -94,5 +94,6 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 def load_model():
     model=tf.keras.models.load_model('weights\efficientnet_model_sg.h5')
     return model
+
 with st.spinner('Model is being loaded..'):
     model=load_model()
