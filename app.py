@@ -68,40 +68,26 @@ else:
         st.balloons()
         st.sidebar.success(string)
 
-    elif class_names[np.argmax(predictions)] == 'Anthracnose':
+    elif class_names[np.argmax(predictions)] == 'Mosaic':
         st.sidebar.warning(string)
         st.markdown("## Remedy")
-        st.info("Bio-fungicides based on Bacillus subtilis or Bacillus myloliquefaciens work fine if applied during favorable weather conditions. Hot water treatment of seeds or fruits (48°C for 20 minutes) can kill any fungal residue and prevent further spreading of the disease in the field or during transport.")
+        st.info("Mosaic viruses are often spread by insect vectors such as aphids. Implementing control measures to manage these vectors can help reduce the spread of the virus. Remove and destroy infected plants as soon as symptoms are observed. This helps prevent further spread of the virus within the field.")
 
-    elif class_names[np.argmax(predictions)] == 'Bacterial Canker':
+    elif class_names[np.argmax(predictions)] == 'RedRot':
         st.sidebar.warning(string)
         st.markdown("## Remedy")
-        st.info("Prune flowering trees during blooming when wounds heal fastest. Remove wilted or dead limbs well below infected areas. Avoid pruning in early spring and fall when bacteria are most active.If using string trimmers around the base of trees avoid damaging bark with breathable Tree Wrap to prevent infection.")
+        st.info("Red rot is a significant disease of sugarcane caused by the fungus Colletotrichum falcatum. Fungicides can be applied preventively or curatively to manage red rot in sugarcane. However, their efficacy depends on various factors such as timing, application method, and resistance development. Proper irrigation management to avoid excessive moisture on sugarcane plants can help reduce the incidence.")
 
-    elif class_names[np.argmax(predictions)] == 'Cutting Weevil':
+    elif class_names[np.argmax(predictions)] == 'Rust':
         st.sidebar.warning(string)
         st.markdown("## Remedy")
-        st.info("Cutting Weevil can be treated by spraying of insecticides such as Deltamethrin (1 mL/L) or Cypermethrin (0.5 mL/L) or Carbaryl (4 g/L) during new leaf emergence can effectively prevent the weevil damage.")
+        st.info("Rust is another significant disease affecting sugarcane, caused by various species of fungi belonging to the genera Puccinia and Cerotelium. Avoiding excessive moisture on sugarcane plants through proper irrigation management can help reduce the incidence and severity of rust, as the fungi thrive in humid conditions.")
 
-    elif class_names[np.argmax(predictions)] == 'Die Back':
+    elif class_names[np.argmax(predictions)] == 'Yellow':
         st.sidebar.warning(string)
         st.markdown("## Remedy")
-        st.info("After pruning, apply copper oxychloride at a concentration of '0.3%' on the wounds. Apply Bordeaux mixture twice a year to reduce the infection rate on the trees. Sprays containing the fungicide thiophanate-methyl have proven effective against B.")
+        st.info("It can be caused by various factors, including nutrient deficiencies, diseases, pests, environmental stress, or physiological disorders. Soil testing can help identify nutrient deficiencies, and corrective measures such as fertilization or foliar application of deficient nutrients can be employed. It may also be a symptom of various underlying diseases, such as yellow leaf syndrome, leaf scald, or mosaic diseases. Proper disease diagnosis and management strategies such as the use of disease-resistant varieties and application of fungicides, may be necessary. Integrated pest management practices, including biological control and use of insecticides can help manage pest populations.")
 
-    elif class_names[np.argmax(predictions)] == 'Gall Midge':
-        st.sidebar.warning(string)
-        st.markdown("## Remedy")
-        st.info("Use yellow sticky traps to catch the flies. Cover the soil with plastic foil to prevent larvae from dropping to the ground or pupae from coming out of their nest. Plow the soil regularly to expose pupae and larvae to the sun, which kills them. Collect and burn infested tree material during the season.")
-
-    elif class_names[np.argmax(predictions)] == 'Powdery Mildew':
-        st.sidebar.warning(string)
-        st.markdown("## Remedy")
-        st.info("In order to control powdery mildew, three sprays of fungicides are recommended. The first spray comprising of wettable sulphur (0.2%, i.e., 2g per litre of water) should be done when the panicles are 8 -10 cm in size as a preventive spray.")
-
-    elif class_names[np.argmax(predictions)] == 'Sooty Mould':
-        st.sidebar.warning(string)
-        st.markdown("## Remedy")
-        st.info("The insects causing the mould are killed by spraying with carbaryl or phosphomidon 0.03%. It is followed by spraying with a dilute solution of starch or maida 5%. On drying, the starch comes off in flakes and the process removes the black mouldy growth fungi from different plant parts.")
         
 st.set_option('deprecation.showfileUploaderEncoding', False)
 @st.cache(allow_output_mutation=True)
