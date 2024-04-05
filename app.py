@@ -2,8 +2,10 @@
 import streamlit as st  
 import tensorflow as tf
 import random
+import PIL
 from PIL import Image, ImageOps
 import numpy as np
+import efficientnet.keras as efn 
 
 # hide deprication warnings which directly don't affect the working of the application
 import warnings
@@ -34,17 +36,20 @@ def prediction_cls(prediction): # predict the class of the images based on the m
 with st.sidebar:
         st.image('images\sugarcane_animated.png')
         st.title("Sugarcane Leaf Disease Detection")
-        st.subheader("The main aim is to provide an accurate understanding of the type of Sugarcane Leaf Detection with a remedial suggestion")
+        st.subheader("The system provides an accurate understanding of the type of Sugarcane Leaf Detection with a remedial suggestion")
 
 st.write("""
          # Sugarcane Disease Detection System
          """
          )
 
+
 file = st.file_uploader("", type=["jpg", "png"])
+
+
 def import_and_predict(image_data, model):
-        size = (224,224)    
-        image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
+        size = (125,125)    
+        image = ImageOps.fit(image_data, size, PIL.Image.Resampling.LANCZOS)
         img = np.asarray(image)
         img_reshape = img[np.newaxis,...]
         prediction = model.predict(img_reshape)
@@ -54,7 +59,7 @@ def import_and_predict(image_data, model):
 if file is None:
     st.text("Please upload an image file")
 else:
-    #model = tf.keras.models.load_model('weights\efficientnet_model_sg.h5')
+    model = tf.keras.models.load_model('weights\efficientnet_model_sg.h5')
     image = Image.open(file)
     st.image(image, use_column_width=True)
     predictions = import_and_predict(image, model)
@@ -93,6 +98,7 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 @st.cache(allow_output_mutation=True)
 def load_model():
     model=tf.keras.models.load_model('weights\efficientnet_model_sg.h5')
+    print(model.summary())
     return model
 
 with st.spinner('Model is being loaded..'):
